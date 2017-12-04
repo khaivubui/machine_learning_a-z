@@ -1,9 +1,9 @@
-# Libraries
+# Importing libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Dataset
+# Importing dataset
 dataset = pd.read_csv('Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
@@ -19,3 +19,7 @@ X[:, 0] = LabelEncoder().fit_transform(X[:, 0])
 X = OneHotEncoder(categorical_features = [0]).fit_transform(X).toarray()
 
 y = LabelEncoder().fit_transform(y)
+
+# Splitting dataset to Training set and Test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
